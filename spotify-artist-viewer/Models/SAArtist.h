@@ -10,11 +10,11 @@
 @interface SAArtist : NSObject
 #pragma mark - Properties
 @property (strong, nonatomic, readonly) NSString* name;
-@property (strong, nonatomic, readonly) NSString* picturePath;
-@property (strong, nonatomic, readonly) NSString* bio;
+@property (nonatomic, readonly) NSNumber* popularity;
+@property (strong, nonatomic) NSString* picturePath;
+@property (strong, nonatomic) NSString* bio;
 
 #pragma mark - Instance Methods
 - (instancetype) initWithName:(NSString*) name
-                  picturePath:(NSString*) picturePath
-                          bio:(NSString*) bio;
+                   popularity:(NSNumber*) popularity;
 @end

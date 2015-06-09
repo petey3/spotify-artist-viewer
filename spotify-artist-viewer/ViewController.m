@@ -7,12 +7,21 @@
 //
 
 #import "ViewController.h"
+#import "SAArtist.h"
+#import "SARequestManager.h"
 
 @interface ViewController ()
-
+@property (strong, nonatomic) NSArray* artists; //array of SAArtists
+@property (strong, nonatomic) SARequestManager* reqManager;
 @end
 
 @implementation ViewController
+
+#pragma mark - Inititializers
+- (SARequestManager*) reqManager {
+    if(!_reqManager) _reqManager = [[SARequestManager alloc] init];
+    return _reqManager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,32 +33,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIActions
 - (IBAction)testButton:(UIButton *)sender {
-    //Testing hitting spotify
-    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    NSString* testQuery = @"tycho";
     
-    //Set up the request and start the data download
-    __block NSData* myData;
-    NSString* target = @"https://api.spotify.com/v1/search?q=tycho&type=artist";
-    NSURL* downloadURL = [NSURL URLWithString:target];
-    NSURLRequest* request = [NSURLRequest requestWithURL:downloadURL];
-    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    myData = data;
-                                                    NSLog(@"Grabbed Data!");
-                                                    
-                                                    //Convert data into JSON
-                                                    NSError* jsonError;
-                                                    NSDictionary* jsonDict = [NSJSONSerialization JSONObjectWithData:myData options:0 error:&jsonError];
-                                                    
-                                                    //Printem out
-                                                    for(NSString* key in [jsonDict allKeys])
-                                                    {
-                                                        NSLog(@"%@", [jsonDict objectForKey:key]);
-                                                    }
-                                                }];
-    [dataTask resume];
+    //Prepare some blocks to be passed in
+    void (^addArtists)(NSArray*) = ^(NSArray* artists){};
+    void (^reportError)(NSError*) = ^(NSError* error){};
+    
+    [self.reqManager getArtistsWithQuery:testQuery
+                                 success:addArtists
+                                 failure:reportError];
 }
 
 
