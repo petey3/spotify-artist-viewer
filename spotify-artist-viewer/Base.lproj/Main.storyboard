@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,80 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8iP-uc-WvV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcs-mU-0de">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Hit Spotify">
+                                            <color key="titleColor" red="0.101339253016192" green="0.94643702651515149" blue="0.28499061900030193" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="testButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xCn-hh-tMY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="pcs-mU-0de" secondAttribute="centerY" id="hKq-cB-zvS"/>
+                                    <constraint firstAttribute="centerX" secondItem="pcs-mU-0de" secondAttribute="centerX" id="uCp-PS-akE"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="pcs-mU-0de"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="hKq-cB-zvS"/>
+                                        <exclude reference="uCp-PS-akE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="pcs-mU-0de"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="hKq-cB-zvS"/>
+                                        <include reference="uCp-PS-akE"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8iP-uc-WvV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9LU-D8-1b1"/>
+                            <constraint firstItem="8iP-uc-WvV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FGf-nC-NNG"/>
+                            <constraint firstAttribute="trailing" secondItem="8iP-uc-WvV" secondAttribute="trailing" id="IwG-b4-CjJ"/>
+                            <constraint firstItem="8iP-uc-WvV" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="LrL-DQ-qpE"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8iP-uc-WvV"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="9LU-D8-1b1"/>
+                                <exclude reference="FGf-nC-NNG"/>
+                                <exclude reference="IwG-b4-CjJ"/>
+                                <exclude reference="LrL-DQ-qpE"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="8iP-uc-WvV"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="9LU-D8-1b1"/>
+                                <include reference="FGf-nC-NNG"/>
+                                <include reference="IwG-b4-CjJ"/>
+                                <include reference="LrL-DQ-qpE"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="250.5" y="349"/>
         </scene>
     </scenes>
 </document>
