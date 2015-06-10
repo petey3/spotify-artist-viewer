@@ -37,8 +37,18 @@
 - (IBAction)testButton:(UIButton *)sender {
     NSString* testQuery = @"tycho";
     
-    //Prepare some blocks to be passed in
-    void (^addArtists)(NSArray*) = ^(NSArray* artists){};
+    //addArtists: stores the arists passed in
+    void (^addArtists)(NSArray*) = ^(NSArray* artists)
+    {
+        self.artists = artists;
+        
+        for(SAArtist* artist in self.artists)
+        {
+            NSLog(@"Added artist named %@ who is %@ popular", artist.name, artist.popularity);
+        }
+    };
+    
+    //reportError: do something constructive if error
     void (^reportError)(NSError*) = ^(NSError* error){};
     
     [self.reqManager getArtistsWithQuery:testQuery
