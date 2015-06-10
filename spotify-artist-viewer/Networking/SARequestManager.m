@@ -61,7 +61,6 @@ static SARequestManager* sharedManager = nil;
         
         //Convert data into JSON Object
         NSDictionary* jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        NSLog(@"jsonDict: %@", jsonDict);
         NSArray* items = [[jsonDict objectForKey:@"artists"] objectForKey:@"items"];
 
         //Create SAArtists

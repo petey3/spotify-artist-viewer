@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "SAArtist.h"
 #import "SARequestManager.h"
+#import "SATableCell.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) NSArray *artists; //array of SAArtists
@@ -71,13 +72,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SATableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        //cell = [[SATableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        //TODO: probably a better way to do this
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SATableCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
-    cell.textLabel.text = [self.artists[indexPath.row] name];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.contentView.backgroundColor = [UIColor darkGrayColor];
+    cell.name.text = [self.artists[indexPath.row] name];
+    float pop = (float)([self.artists[indexPath.row] popularity].floatValue / 100.0f);
+    cell.popularity.progress = pop;
     return cell;
 }
 

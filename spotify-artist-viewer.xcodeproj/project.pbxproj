@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072B8DD41B28DFEA00BCD2E5 /* SATableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */; };
+		072B8DDB1B28E68100BCD2E5 /* SATableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 072B8DDA1B28E68100BCD2E5 /* SATableCell.m */; };
 		2E76742D1B26766200336867 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E76742C1B26766200336867 /* main.m */; };
 		2E7674301B26766200336867 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E76742F1B26766200336867 /* AppDelegate.m */; };
 		2E7674331B26766200336867 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7674321B26766200336867 /* ViewController.m */; };
@@ -29,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SATableCell.xib; sourceTree = "<group>"; };
+		072B8DD91B28E68100BCD2E5 /* SATableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SATableCell.h; path = View/SATableCell.h; sourceTree = "<group>"; };
+		072B8DDA1B28E68100BCD2E5 /* SATableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SATableCell.m; path = View/SATableCell.m; sourceTree = "<group>"; };
 		2E7674271B26766200336867 /* spotify-artist-viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spotify-artist-viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E76742B1B26766200336867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E76742C1B26766200336867 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,6 +71,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		072B8DD81B28E0F600BCD2E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2E7674311B26766200336867 /* ViewController.h */,
+				2E7674321B26766200336867 /* ViewController.m */,
+				072B8DD91B28E68100BCD2E5 /* SATableCell.h */,
+				072B8DDA1B28E68100BCD2E5 /* SATableCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		2E76741E1B26766200336867 = {
 			isa = PBXGroup;
 			children = (
@@ -91,12 +107,12 @@
 				2E7674511B2676D400336867 /* Networking */,
 				2E76742E1B26766200336867 /* AppDelegate.h */,
 				2E76742F1B26766200336867 /* AppDelegate.m */,
-				2E7674311B26766200336867 /* ViewController.h */,
-				2E7674321B26766200336867 /* ViewController.m */,
 				2E7674341B26766200336867 /* Main.storyboard */,
 				2E7674371B26766200336867 /* Images.xcassets */,
 				2E7674391B26766200336867 /* LaunchScreen.xib */,
 				2E76742A1B26766200336867 /* Supporting Files */,
+				072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */,
+				072B8DD81B28E0F600BCD2E5 /* View */,
 			);
 			path = "spotify-artist-viewer";
 			sourceTree = "<group>";
@@ -225,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072B8DD41B28DFEA00BCD2E5 /* SATableCell.xib in Resources */,
 				2E7674361B26766200336867 /* Main.storyboard in Resources */,
 				2E76743B1B26766200336867 /* LaunchScreen.xib in Resources */,
 				2E7674381B26766200336867 /* Images.xcassets in Resources */,
@@ -249,6 +266,7 @@
 				2E7674331B26766200336867 /* ViewController.m in Sources */,
 				2E7674301B26766200336867 /* AppDelegate.m in Sources */,
 				2E76742D1B26766200336867 /* main.m in Sources */,
+				072B8DDB1B28E68100BCD2E5 /* SATableCell.m in Sources */,
 				2E7674571B26772600336867 /* SARequestManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +464,7 @@
 				2E76744C1B26766200336867 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E76744D1B26766200336867 /* Build configuration list for PBXNativeTarget "spotify-artist-viewerTests" */ = {
 			isa = XCConfigurationList;
@@ -454,6 +473,7 @@
 				2E76744F1B26766200336867 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
