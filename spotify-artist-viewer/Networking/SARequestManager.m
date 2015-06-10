@@ -53,9 +53,9 @@ static SARequestManager* sharedManager = nil;
     NSURL* downloadURL = [NSURL URLWithString:target];
     NSURLRequest* request = [NSURLRequest requestWithURL:downloadURL];
     
-    //Block for handling the incoming data
-    typedef void (^dataHandler)(NSData* data, NSURLResponse* response, NSError* error);
-    dataHandler dataBlock = ^void(NSData* data, NSURLResponse* response, NSError* error)
+    //Block for processing the JSON we get back for or artist query
+    typedef void (^artistDataProcessor)(NSData* data, NSURLResponse* response, NSError* error);
+    artistDataProcessor block = ^void(NSData* data, NSURLResponse* response, NSError* error)
     {
         NSLog(@"Grabbed Data!");
         
@@ -75,17 +75,15 @@ static SARequestManager* sharedManager = nil;
         }
         
         //If successful, call success on the array of artists (which we trust does something good with them)
-        if(!error.code) success(artists);
-        else failure(error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(!error.code) success(artists);
+            else failure(error);
+        });
     };
     
     //Make the request and start the download
     NSURLSessionDataTask* dataTask = [self.session dataTaskWithRequest:request
-                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                                             dataBlock(data, response, error);
-                                                         });
-                                                     }];
+                                                     completionHandler:block];
     [dataTask resume];
 }
 
