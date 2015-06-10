@@ -11,8 +11,10 @@
 #import "SARequestManager.h"
 
 @interface ViewController ()
-@property (strong, nonatomic) NSArray* artists; //array of SAArtists
-@property (strong, nonatomic) SARequestManager* reqManager;
+@property (strong, nonatomic) NSArray *artists; //array of SAArtists
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) SARequestManager *reqManager;
+@property (weak, nonatomic) IBOutlet UITableView *resultsTable;
 @end
 
 @implementation ViewController
@@ -25,7 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.resultsTable setBackgroundColor:[UIColor lightGrayColor]];
     // Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"View did load");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,29 +37,48 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UIActions
-- (IBAction)testButton:(UIButton *)sender {
-    NSString* testQuery = @"tycho";
+#pragma mark - SearchBar Actions
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    NSLog(@"Search Bar Updated");
     
     //addArtists: stores the arists passed in
-    void (^addArtists)(NSArray*) = ^(NSArray* artists)
-    {
+    void (^addArtists)(NSArray*) = ^(NSArray* artists) {
         self.artists = artists;
-        
-        for(SAArtist* artist in self.artists)
-        {
-            NSLog(@"Added artist named %@ who is %@ popular", artist.name, artist.popularity);
-        }
+        [self.resultsTable reloadData];
     };
     
     //reportError: do something constructive if error
     void (^reportError)(NSError*) = ^(NSError* error){};
     
-    [self.reqManager getArtistsWithQuery:testQuery
+    //Update artists based on the search
+    [self.reqManager getArtistsWithQuery:searchText
                                  success:addArtists
                                  failure:reportError];
 }
+     
+#pragma mark - TableView Actions
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.artists.count;
+}
 
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    cell.textLabel.text = [self.artists[indexPath.row] name];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = [UIColor darkGrayColor];
+    return cell;
+}
 
 @end

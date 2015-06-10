@@ -61,6 +61,7 @@ static SARequestManager* sharedManager = nil;
         
         //Convert data into JSON Object
         NSDictionary* jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        NSLog(@"jsonDict: %@", jsonDict);
         NSArray* items = [[jsonDict objectForKey:@"artists"] objectForKey:@"items"];
 
         //Create SAArtists
@@ -74,13 +75,17 @@ static SARequestManager* sharedManager = nil;
         }
         
         //If successful, call success on the array of artists (which we trust does something good with them)
-        if(YES) success(artists); //TODO: how do we check the state of error?
-        else failure(error); //TODO: how do we load error?
+        if(!error.code) success(artists);
+        else failure(error);
     };
     
     //Make the request and start the download
     NSURLSessionDataTask* dataTask = [self.session dataTaskWithRequest:request
-                                                     completionHandler:dataBlock];
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                             dataBlock(data, response, error);
+                                                         });
+                                                     }];
     [dataTask resume];
 }
 
