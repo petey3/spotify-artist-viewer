@@ -123,14 +123,14 @@
             </objects>
             <point key="canvasLocation" x="169.5" y="411"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Spotify Artist Search-->
         <scene sceneID="a9u-Bj-BBx">
             <objects>
-                <tableViewController id="DYc-co-tIM" customClass="ViewController" sceneMemberID="viewController">
+                <tableViewController title="Spotify Artist Search" id="DYc-co-tIM" userLabel="Spotify Artist Search" customClass="ViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YCh-SY-x9g">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="djx-fs-XM5">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="find an artist on spotify" id="djx-fs-XM5">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -151,7 +151,7 @@
                             <outlet property="delegate" destination="DYc-co-tIM" id="zwP-PR-eyc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="hfe-AE-iST"/>
+                    <navigationItem key="navigationItem" title="Spotify Artist Search" id="hfe-AE-iST"/>
                     <connections>
                         <outlet property="resultsTable" destination="YCh-SY-x9g" id="ffn-w9-Nwm"/>
                         <outlet property="searchBar" destination="djx-fs-XM5" id="TPT-cT-INx"/>
@@ -169,6 +169,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iVH-pt-4mJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="DYc-co-tIM" kind="relationship" relationship="rootViewController" id="Lyl-BE-pNs"/>
@@ -194,9 +198,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.075988068490000005" green="0.70967487370000004" blue="0.2136969242" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="16" y="70" width="368" height="27"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrK-6C-gH0">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -241,14 +242,13 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GrK-6C-gH0" firstAttribute="leading" secondItem="kQV-lv-0BK" secondAttribute="leadingMargin" id="1H6-Nb-fch"/>
-                            <constraint firstItem="Vu2-ag-oGZ" firstAttribute="trailing" secondItem="kQV-lv-0BK" secondAttribute="trailingMargin" id="1u8-Qs-Wak"/>
-                            <constraint firstAttribute="centerX" secondItem="Vu2-ag-oGZ" secondAttribute="centerX" id="TEz-Bw-mdf"/>
+                            <constraint firstItem="Vu2-ag-oGZ" firstAttribute="leading" secondItem="kQV-lv-0BK" secondAttribute="leadingMargin" id="C1r-tp-uqc"/>
+                            <constraint firstItem="Vu2-ag-oGZ" firstAttribute="trailing" secondItem="kQV-lv-0BK" secondAttribute="trailingMargin" id="JwO-mI-o91"/>
                             <constraint firstAttribute="centerX" secondItem="agT-Wn-xzq" secondAttribute="centerX" id="W7b-Yn-0xw"/>
-                            <constraint firstItem="agT-Wn-xzq" firstAttribute="top" secondItem="Vu2-ag-oGZ" secondAttribute="bottom" constant="20" id="km5-D4-d9y"/>
                             <constraint firstAttribute="centerX" secondItem="agT-Wn-xzq" secondAttribute="centerX" id="oNg-ma-KJm"/>
                             <constraint firstItem="GrK-6C-gH0" firstAttribute="top" secondItem="agT-Wn-xzq" secondAttribute="bottom" constant="29" id="pDB-Ai-ENe"/>
                             <constraint firstItem="GrK-6C-gH0" firstAttribute="trailing" secondItem="kQV-lv-0BK" secondAttribute="trailingMargin" id="pXx-Yk-QMU"/>
-                            <constraint firstItem="Vu2-ag-oGZ" firstAttribute="leading" secondItem="kQV-lv-0BK" secondAttribute="leadingMargin" id="zJ7-VX-EJP"/>
+                            <constraint firstItem="Vu2-ag-oGZ" firstAttribute="top" secondItem="3Oa-Ct-JwD" secondAttribute="bottom" constant="6" id="uhm-aR-U43"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -258,11 +258,10 @@
                                 <exclude reference="fHC-YY-Ta5"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1u8-Qs-Wak"/>
-                                <exclude reference="TEz-Bw-mdf"/>
-                                <exclude reference="zJ7-VX-EJP"/>
+                                <exclude reference="C1r-tp-uqc"/>
+                                <exclude reference="JwO-mI-o91"/>
+                                <exclude reference="uhm-aR-U43"/>
                                 <exclude reference="W7b-Yn-0xw"/>
-                                <exclude reference="km5-D4-d9y"/>
                                 <exclude reference="oNg-ma-KJm"/>
                                 <exclude reference="1H6-Nb-fch"/>
                                 <exclude reference="pDB-Ai-ENe"/>
@@ -277,11 +276,10 @@
                                 <include reference="fHC-YY-Ta5"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1u8-Qs-Wak"/>
-                                <include reference="TEz-Bw-mdf"/>
-                                <include reference="zJ7-VX-EJP"/>
+                                <include reference="C1r-tp-uqc"/>
+                                <include reference="JwO-mI-o91"/>
+                                <include reference="uhm-aR-U43"/>
                                 <include reference="W7b-Yn-0xw"/>
-                                <include reference="km5-D4-d9y"/>
                                 <include reference="oNg-ma-KJm"/>
                                 <include reference="1H6-Nb-fch"/>
                                 <include reference="pDB-Ai-ENe"/>
@@ -301,4 +299,5 @@
             <point key="canvasLocation" x="1810.5" y="1125"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.075988068490000005" green="0.70967487370000004" blue="0.2136969242" alpha="1" colorSpace="calibratedRGB"/>
 </document>
