@@ -40,8 +40,8 @@
                        failure:reportError];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     [self setArtistImage:self.artist.pictureURL];
 }
 
