@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SAArtist.h"
 
 @interface SARequestManager : NSObject
 
@@ -15,4 +16,10 @@
                     success:(void (^)(NSArray *artists))success
                     failure:(void (^)(NSError *error))failure;
 
+/*!
+ @discussion Loads the artist bio only when we need it and stores it
+ */
+- (void)storeArtistBio:(SAArtist *)artist
+             success:(void (^)(SAArtist *arist))success
+             failure:(void (^)(NSError *error))failure;
 @end

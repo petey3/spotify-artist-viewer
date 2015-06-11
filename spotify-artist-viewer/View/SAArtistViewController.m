@@ -7,6 +7,7 @@
 //
 
 #import "SAArtistViewController.h"
+#import "SARequestManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SAArtistViewController ()
@@ -23,7 +24,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.artistLabel.text = self.artist.name;
-    [self setArtistImage:self.artist.pictureUrl];
+    [self setArtistImage:self.artist.pictureURL];
+    
+    //Load and set the artist Bio
+    void (^setBio)(SAArtist *) = ^(SAArtist *artist) {
+        self.bioText.text = artist.bio;
+    };
+    
+    //reportError: do something constructive if error
+    void (^reportError)(NSError*) = ^(NSError* error){};
+    
+    //Update artists based on the search
+    SARequestManager *reqManager = [SARequestManager sharedManager];
+    [reqManager storeArtistBio:self.artist
+                       success:setBio
+                       failure:reportError];
 }
 
 - (void)didReceiveMemoryWarning {
