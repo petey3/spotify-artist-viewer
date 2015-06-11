@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.resultsTable setBackgroundColor:[UIColor lightGrayColor]];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"View did load");
 }
