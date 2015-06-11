@@ -24,7 +24,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = self.artist.name;
-    [self setArtistImage:self.artist.pictureURL];
     
     //Load and set the artist Bio
     void (^setBio)(SAArtist *) = ^(SAArtist *artist) {
@@ -41,6 +40,11 @@
                        failure:reportError];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setArtistImage:self.artist.pictureURL];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -50,6 +54,14 @@
     NSURL *imgURL = [NSURL URLWithString:picture];
     [self.artistImageView sd_setImageWithURL:imgURL];
     [self.blurImageView sd_setImageWithURL:imgURL];
+    
+    //Make the arist image uhm. Round? Round. Jk its a diamond or something lol.
+    self.artistImageView.layer.cornerRadius = self.artistImageView.frame.size.width / 2;
+    self.artistImageView.clipsToBounds = YES;
+    
+    //Give it a border
+    self.artistImageView.layer.borderWidth = 3.0f;
+    self.artistImageView.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 #pragma mark - Navigation

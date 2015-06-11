@@ -83,14 +83,15 @@
         cell = [nib objectAtIndex:0];
     }
     cell.name.text = [self.artists[indexPath.row] name];
-    float pop = (float)([self.artists[indexPath.row] popularity].floatValue / 100.0f);
-    cell.popularity.progress = pop;
+    
+    //Set the popularity bar with animation
+    NSNumber *artistPop = [self.artists[indexPath.row] popularity];
+    [cell.popularity setProgress:(float)(artistPop.floatValue / 100.0f) animated:YES];
     return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"goToArtistDetail" sender:self.resultsTable];
-    //NSLog(@"%@ was touched. Someone touched him/her", artist.name);
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

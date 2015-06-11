@@ -223,7 +223,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A9J-3d-kEH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A9J-3d-kEH" userLabel="BG View">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="9Uf-Na-dj5"/>
@@ -254,7 +254,7 @@
                                     <constraint firstAttribute="width" constant="400" id="KbS-RM-5al"/>
                                     <constraint firstAttribute="height" constant="204" id="dwR-Pb-fAM"/>
                                 </constraints>
-                                <blurEffect style="light"/>
+                                <blurEffect style="dark"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="GUa-M0-rRy"/>
@@ -272,7 +272,7 @@
                                     </mask>
                                 </variation>
                             </visualEffectView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="agT-Wn-xzq">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="agT-Wn-xzq" userLabel="Artist View">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="EAk-Ih-kWX"/>
@@ -301,6 +301,7 @@
                             <constraint firstItem="fOw-Kp-H86" firstAttribute="top" secondItem="fHC-YY-Ta5" secondAttribute="bottom" constant="20" id="Bcj-UG-ovd"/>
                             <constraint firstItem="p9b-uU-SE4" firstAttribute="top" secondItem="3Oa-Ct-JwD" secondAttribute="bottom" id="Ki2-eK-7Lb"/>
                             <constraint firstItem="A9J-3d-kEH" firstAttribute="leading" secondItem="kQV-lv-0BK" secondAttribute="leadingMargin" constant="-16" id="Rkh-GK-cMC"/>
+                            <constraint firstAttribute="centerX" secondItem="agT-Wn-xzq" secondAttribute="centerX" id="Voc-fF-A5k"/>
                             <constraint firstItem="fHC-YY-Ta5" firstAttribute="top" secondItem="GrK-6C-gH0" secondAttribute="bottom" constant="8" symbolic="YES" id="ZoJ-W6-19b"/>
                             <constraint firstItem="fHC-YY-Ta5" firstAttribute="leading" secondItem="kQV-lv-0BK" secondAttribute="leadingMargin" id="h0T-4B-4Hv"/>
                             <constraint firstItem="GrK-6C-gH0" firstAttribute="top" secondItem="kQV-lv-0BK" secondAttribute="top" constant="268" id="iKs-Wo-da6"/>
@@ -327,6 +328,7 @@
                                 <exclude reference="Ki2-eK-7Lb"/>
                                 <exclude reference="l5E-AG-YR1"/>
                                 <exclude reference="93N-ng-5uM"/>
+                                <exclude reference="Voc-fF-A5k"/>
                                 <exclude reference="x3g-7W-Lqf"/>
                                 <exclude reference="z4z-Od-b47"/>
                                 <exclude reference="4fg-Jc-INh"/>
@@ -354,8 +356,9 @@
                                 <include reference="Ki2-eK-7Lb"/>
                                 <include reference="l5E-AG-YR1"/>
                                 <include reference="93N-ng-5uM"/>
-                                <include reference="x3g-7W-Lqf"/>
-                                <include reference="z4z-Od-b47"/>
+                                <include reference="Voc-fF-A5k"/>
+                                <exclude reference="x3g-7W-Lqf"/>
+                                <exclude reference="z4z-Od-b47"/>
                                 <include reference="4fg-Jc-INh"/>
                                 <include reference="7Ix-cL-WmZ"/>
                                 <include reference="iKs-Wo-da6"/>
