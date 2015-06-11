@@ -18,6 +18,8 @@
 #pragma mark - Instance Methods
 - (instancetype) initWithName:(NSString *)name
                    popularity:(NSNumber *)popularity
+                       imgUrl:(NSString *)imgUrl;
+
 {
     self = [super init];
     
@@ -25,6 +27,7 @@
     {
         self.name = name;
         self.popularity = popularity;
+        self.pictureUrl = imgUrl;
     }
     
     return self;

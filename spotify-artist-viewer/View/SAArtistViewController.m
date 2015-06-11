@@ -7,6 +7,7 @@
 //
 
 #import "SAArtistViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SAArtistViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
@@ -22,11 +23,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.artistLabel.text = self.artist.name;
+    [self setArtistImage:self.artist.pictureUrl];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setArtistImage:(NSString *)picture {
+    NSURL *imgURL = [NSURL URLWithString:picture];
+    [self.artistImageView sd_setImageWithURL:imgURL];
 }
 
 #pragma mark - Navigation

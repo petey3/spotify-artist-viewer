@@ -69,7 +69,11 @@ static SARequestManager* sharedManager = nil;
         {
             NSString* name = [item objectForKey:@"name"];
             NSNumber* pop = [item objectForKey:@"popularity"];
-            SAArtist* artist = [[SAArtist alloc] initWithName:name popularity:pop];
+            //Also grab the 3rd image from the images key
+            NSString* imgUrl = [self findBestImage:item];
+            SAArtist* artist = [[SAArtist alloc] initWithName:name
+                                                   popularity:pop
+                                                       imgUrl:imgUrl];
             [artists addObject:artist];
         }
         
@@ -84,6 +88,23 @@ static SARequestManager* sharedManager = nil;
     NSURLSessionDataTask* dataTask = [self.session dataTaskWithRequest:request
                                                      completionHandler:block];
     [dataTask resume];
+}
+
+#pragma mark - Utility
+//Looks at the item from the dictionary and finds the best picture match
+- (NSString *) findBestImage:(id)item {
+    
+    NSString* imgURL;
+    NSArray* images = [item objectForKey:@"images"];
+    
+    if(images.count) {
+        imgURL = [images[0] objectForKey:@"url"];
+    }
+    else {
+        imgURL = @"";
+    }
+    
+    return imgURL;
 }
 
 @end

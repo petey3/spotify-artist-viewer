@@ -11,10 +11,11 @@
 #pragma mark - Properties
 @property (strong, nonatomic, readonly) NSString* name;
 @property (nonatomic, readonly) NSNumber* popularity;
-@property (strong, nonatomic) NSString* picturePath;
+@property (strong, nonatomic) NSString* pictureUrl;
 @property (strong, nonatomic) NSString* bio;
 
 #pragma mark - Instance Methods
 - (instancetype) initWithName:(NSString*) name
-                   popularity:(NSNumber*) popularity;
+                   popularity:(NSNumber*) popularity
+                       imgUrl:(NSString*) imgUrl;
 @end
