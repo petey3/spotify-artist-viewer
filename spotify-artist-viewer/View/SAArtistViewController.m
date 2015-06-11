@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @property (weak, nonatomic) IBOutlet UITextView *bioText;
+@property (weak, nonatomic) IBOutlet UIImageView *blurImageView;
 @end
 
 @implementation SAArtistViewController
@@ -49,6 +50,7 @@
 - (void)setArtistImage:(NSString *)picture {
     NSURL *imgURL = [NSURL URLWithString:picture];
     [self.artistImageView sd_setImageWithURL:imgURL];
+    [self.blurImageView sd_setImageWithURL:imgURL];
 }
 
 #pragma mark - Navigation
