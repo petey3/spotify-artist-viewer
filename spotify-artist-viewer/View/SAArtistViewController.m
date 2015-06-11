@@ -11,7 +11,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SAArtistViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *artistLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *artistImageView;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @property (weak, nonatomic) IBOutlet UITextView *bioText;
@@ -24,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.artistLabel.text = self.artist.name;
+    self.navigationItem.title = self.artist.name;
     [self setArtistImage:self.artist.pictureURL];
     
     //Load and set the artist Bio
