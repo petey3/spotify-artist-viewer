@@ -10,12 +10,15 @@
 #import "SAArtist.h"
 #import "SARequestManager.h"
 #import "SATableCell.h"
+#import "SAArtistViewController.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) NSArray *artists; //array of SAArtists
+//@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) SARequestManager *reqManager;
-@property (weak, nonatomic) IBOutlet UITableView *resultsTable;
+//@property (weak, nonatomic) IBOutlet UITableView *resultsTable;
+@property (strong, nonatomic) IBOutlet UITableView *resultsTable;
 @end
 
 @implementation ViewController
@@ -75,7 +78,7 @@
     SATableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         //cell = [[SATableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        //TODO: probably a better way to do this
+        //TODO: probably a better way to do this, or at least, more modern
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SATableCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
@@ -83,6 +86,20 @@
     float pop = (float)([self.artists[indexPath.row] popularity].floatValue / 100.0f);
     cell.popularity.progress = pop;
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"goToArtistDetail" sender:self.resultsTable];
+    //NSLog(@"%@ was touched. Someone touched him/her", artist.name);
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"goToArtistDetail"]) {
+        NSIndexPath *indexPath = [self.resultsTable indexPathForSelectedRow];
+        SAArtist *artist = self.artists[indexPath.row];
+        SAArtistViewController *detailVC = [segue destinationViewController];
+        detailVC.artist = artist;
+    }
 }
 
 @end
