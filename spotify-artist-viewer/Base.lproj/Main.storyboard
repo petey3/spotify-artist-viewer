@@ -297,7 +297,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="av8-Hc-RZp" id="tPH-mZ-2wb"/>
+                                <outlet property="delegate" destination="av8-Hc-RZp" id="QxY-sm-zMU"/>
                             </connections>
                         </searchBar>
                         <prototypes>
@@ -309,15 +309,15 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="av8-Hc-RZp" id="Q9K-uH-7by"/>
-                            <outlet property="delegate" destination="av8-Hc-RZp" id="GgE-z0-YHJ"/>
+                            <outlet property="dataSource" destination="av8-Hc-RZp" id="X9B-fr-5G0"/>
+                            <outlet property="delegate" destination="av8-Hc-RZp" id="UBe-i1-NXE"/>
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="MGZ-KI-U0v"/>
-                    <navigationItem key="navigationItem" title="Spotify Artist Search" id="bvD-kf-ZPt"/>
+                    <navigationItem key="navigationItem" title="Favorited Artists" id="bvD-kf-ZPt"/>
                     <connections>
-                        <outlet property="favoritesTable" destination="xTz-tS-Qbi" id="cWp-wB-zNE"/>
-                        <outlet property="searchBar" destination="xTz-tS-Qbi" id="hB1-vz-zLM"/>
+                        <outlet property="favoritesTable" destination="xTz-tS-Qbi" id="qWq-xo-MhY"/>
+                        <outlet property="searchBar" destination="B80-CN-AQE" id="rbX-d0-CmJ"/>
                         <segue destination="F07-Mr-rjh" kind="show" identifier="goToArtistDetail" id="gwo-Hk-yeR"/>
                     </connections>
                 </tableViewController>

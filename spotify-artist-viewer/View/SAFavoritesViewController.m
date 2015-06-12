@@ -7,17 +7,24 @@
 //
 
 #import "SAFavoritesViewController.h"
+#import "SAFavoritesManager.h"
+#import "SATableCell.h"
 
 @interface SAFavoritesViewController ()
-@property (strong, nonatomic) IBOutlet UITableView *searchBar;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UITableView *favoritesTable;
+@property (strong, nonatomic) SAFavoritesManager *favManager;
 @end
 
 @implementation SAFavoritesViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.favoritesTable reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -30,18 +37,43 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (SAFavoritesManager *)favManager {
+    if(!_favManager) _favManager = [SAFavoritesManager sharedManager];
+    return _favManager;
+}
+
+#pragma mark - SearchBar Delegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self.favoritesTable reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    NSLog(@"Table sees %li artists", self.favManager.artists.count);
+    return self.favManager.artists.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    NSArray *artists = self.favManager.artists;
+    
+    SATableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SATableCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    cell.name.text = [artists[indexPath.row] name];
+    NSNumber *artistPopularity = [artists[indexPath.row] popularity];
+    [cell.popularity setProgress:(float)(artistPopularity.floatValue / 100.0f) animated:YES];
+    
+    return cell;
 }
 
 /*

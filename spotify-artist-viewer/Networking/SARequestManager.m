@@ -118,7 +118,6 @@
             //(as opposed to truncated = false)
             if(![bio objectForKey:@"truncated"]) {
                 bioText = [bio objectForKey:@"text"];
-                NSLog(@"%@", bioText);
                 break; //grab the first non-truncated one
             }
         }

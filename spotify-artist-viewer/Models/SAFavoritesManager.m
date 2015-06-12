@@ -14,6 +14,7 @@
 @end
 
 @implementation SAFavoritesManager
+static SAFavoritesManager *sharedManager = nil;
 
 #pragma mark - Initializers
 - (instancetype) init {
@@ -39,13 +40,7 @@
 
 #pragma mark - Class Methods
 + (instancetype)sharedManager {
-    static SAFavoritesManager *sharedManager = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedManager = [[SAFavoritesManager alloc] init];
-    });
-    
+    if(!sharedManager) sharedManager = [[SAFavoritesManager alloc] init];
     return sharedManager;
 }
 
@@ -54,6 +49,7 @@
     if(artist) {
         [self.mutableArtists addObject:artist];
         self.artists = [self.mutableArtists copy];
+        NSLog(@"Added %@ as a new favorite artist, totaling %li favorite artists", artist.name, self.artists.count);
     }
 }
 
@@ -61,6 +57,7 @@
     if([self.mutableArtists containsObject:artist]) {
         [self.mutableArtists removeObject:artist];
         self.artists = [self.mutableArtists copy];
+        NSLog(@"Removed %@ as a new favorite artist, totaling %li favorite artists", artist.name, self.artists.count);
     }
 }
 
