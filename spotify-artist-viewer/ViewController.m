@@ -14,10 +14,8 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) NSArray *artists; //array of SAArtists
-//@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) SARequestManager *reqManager;
-//@property (weak, nonatomic) IBOutlet UITableView *resultsTable;
 @property (strong, nonatomic) IBOutlet UITableView *resultsTable;
 @end
 
@@ -33,8 +31,6 @@
     [super viewDidLoad];
     [self.resultsTable setBackgroundColor:[UIColor lightGrayColor]];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    // Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"View did load");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,17 +39,13 @@
 }
 
 #pragma mark - SearchBar Actions
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    NSLog(@"Search Bar Updated");
-    
-    //addArtists: stores the arists passed in
-    void (^addArtists)(NSArray*) = ^(NSArray* artists) {
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    void (^addArtists)(NSArray *) = ^(NSArray *artists) {
         self.artists = artists;
         [self.resultsTable reloadData];
     };
     
-    //reportError: do something constructive if error
+    //TODO:actually do something with error
     void (^reportError)(NSError*) = ^(NSError* error){};
     
     //Update artists based on the search
@@ -72,22 +64,19 @@
     return self.artists.count;
 }
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
     SATableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        //cell = [[SATableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        //TODO: probably a better way to do this, or at least, more modern
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SATableCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    cell.name.text = [self.artists[indexPath.row] name];
     
-    //Set the popularity bar with animation
-    NSNumber *artistPop = [self.artists[indexPath.row] popularity];
-    [cell.popularity setProgress:(float)(artistPop.floatValue / 100.0f) animated:YES];
+    cell.name.text = [self.artists[indexPath.row] name];
+    NSNumber *artistPopularity = [self.artists[indexPath.row] popularity];
+    [cell.popularity setProgress:(float)(artistPopularity.floatValue / 100.0f) animated:YES];
+    
     return cell;
 }
 

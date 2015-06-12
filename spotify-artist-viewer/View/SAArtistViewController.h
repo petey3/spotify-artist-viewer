@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "SAArtist.h"
-@class SAArtist; //<- this was in the assignment...why?
 
 @interface SAArtistViewController : UIViewController
 @property (strong, nonatomic) SAArtist *artist;

@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSString *bio;
 
 #pragma mark - Instance Methods
-- (instancetype) initWithName:(NSString *) name
-                   popularity:(NSNumber *) popularity
-                       imgURL:(NSString *) imgURL
-                    spotifyURI:(NSString *) spuri;
+- (instancetype) initWithName:(NSString *)name
+                   popularity:(NSNumber *)popularity
+                       imgURL:(NSString *)imgURL
+                    spotifyURI:(NSString *)spuri;
 @end

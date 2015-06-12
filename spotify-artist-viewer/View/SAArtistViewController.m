@@ -22,16 +22,14 @@
 #pragma mark - Setup
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     self.navigationItem.title = self.artist.name;
     
-    //Load and set the artist Bio
     void (^setBio)(SAArtist *) = ^(SAArtist *artist) {
         self.bioText.text = artist.bio;
     };
     
-    //reportError: do something constructive if error
-    void (^reportError)(NSError*) = ^(NSError* error){};
+    void (^reportError)(NSError *) = ^(NSError *error){};
     
     //Update artists based on the search
     SARequestManager *reqManager = [SARequestManager sharedManager];
@@ -55,21 +53,13 @@
     [self.artistImageView sd_setImageWithURL:imgURL];
     [self.blurImageView sd_setImageWithURL:imgURL];
     
-    //Make the arist image uhm. Round? Round. Jk its a diamond or something lol.
+    //Make the arist image a circle
     self.artistImageView.layer.cornerRadius = self.artistImageView.frame.size.width / 2;
     self.artistImageView.clipsToBounds = YES;
     
     //Give it a border
     self.artistImageView.layer.borderWidth = 3.0f;
     self.artistImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-}
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 @end

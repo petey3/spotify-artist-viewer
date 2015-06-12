@@ -20,13 +20,10 @@
 - (instancetype) initWithName:(NSString *)name
                    popularity:(NSNumber *)popularity
                        imgURL:(NSString *)imgURL
-                    spotifyURI:(NSString *)spuri;
-
-{
+                    spotifyURI:(NSString *)spuri {
     self = [super init];
     
-    if(self)
-    {
+    if(self) {
         self.name = name;
         self.popularity = popularity;
         self.pictureURL = imgURL;
