@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		072B8DD41B28DFEA00BCD2E5 /* SATableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */; };
 		072B8DDB1B28E68100BCD2E5 /* SATableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 072B8DDA1B28E68100BCD2E5 /* SATableCell.m */; };
+		074A332C1B2B1CA8006AD27B /* SAFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074A332B1B2B1CA8006AD27B /* SAFavoritesViewController.m */; };
+		074A332F1B2B1DD3006AD27B /* SAFavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 074A332E1B2B1DD3006AD27B /* SAFavoritesManager.m */; };
 		074AD5CB1B29BBB80018BEEF /* SAArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074AD5CA1B29BBB80018BEEF /* SAArtistViewController.m */; };
 		2E76742D1B26766200336867 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E76742C1B26766200336867 /* main.m */; };
 		2E7674301B26766200336867 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E76742F1B26766200336867 /* AppDelegate.m */; };
@@ -36,6 +38,10 @@
 		072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SATableCell.xib; sourceTree = "<group>"; };
 		072B8DD91B28E68100BCD2E5 /* SATableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SATableCell.h; path = View/SATableCell.h; sourceTree = "<group>"; };
 		072B8DDA1B28E68100BCD2E5 /* SATableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SATableCell.m; path = View/SATableCell.m; sourceTree = "<group>"; };
+		074A332A1B2B1CA8006AD27B /* SAFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SAFavoritesViewController.h; path = View/SAFavoritesViewController.h; sourceTree = "<group>"; };
+		074A332B1B2B1CA8006AD27B /* SAFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SAFavoritesViewController.m; path = View/SAFavoritesViewController.m; sourceTree = "<group>"; };
+		074A332D1B2B1DD3006AD27B /* SAFavoritesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SAFavoritesManager.h; path = Models/SAFavoritesManager.h; sourceTree = "<group>"; };
+		074A332E1B2B1DD3006AD27B /* SAFavoritesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SAFavoritesManager.m; path = Models/SAFavoritesManager.m; sourceTree = "<group>"; };
 		074AD5C91B29BBB80018BEEF /* SAArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SAArtistViewController.h; path = View/SAArtistViewController.h; sourceTree = "<group>"; };
 		074AD5CA1B29BBB80018BEEF /* SAArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SAArtistViewController.m; path = View/SAArtistViewController.m; sourceTree = "<group>"; };
 		15113B1E0B16E4EF6147ED57 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +103,8 @@
 				072B8DDA1B28E68100BCD2E5 /* SATableCell.m */,
 				074AD5C91B29BBB80018BEEF /* SAArtistViewController.h */,
 				074AD5CA1B29BBB80018BEEF /* SAArtistViewController.m */,
+				074A332A1B2B1CA8006AD27B /* SAFavoritesViewController.h */,
+				074A332B1B2B1CA8006AD27B /* SAFavoritesViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -169,6 +177,8 @@
 			children = (
 				2E7674521B2676F400336867 /* SAArtist.h */,
 				2E7674531B2676F400336867 /* SAArtist.m */,
+				074A332D1B2B1DD3006AD27B /* SAFavoritesManager.h */,
+				074A332E1B2B1DD3006AD27B /* SAFavoritesManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -328,8 +338,10 @@
 			files = (
 				2E7674541B2676F400336867 /* SAArtist.m in Sources */,
 				2E7674331B26766200336867 /* ViewController.m in Sources */,
+				074A332F1B2B1DD3006AD27B /* SAFavoritesManager.m in Sources */,
 				2E7674301B26766200336867 /* AppDelegate.m in Sources */,
 				074AD5CB1B29BBB80018BEEF /* SAArtistViewController.m in Sources */,
+				074A332C1B2B1CA8006AD27B /* SAFavoritesViewController.m in Sources */,
 				2E76742D1B26766200336867 /* main.m in Sources */,
 				072B8DDB1B28E68100BCD2E5 /* SATableCell.m in Sources */,
 				2E7674571B26772600336867 /* SARequestManager.m in Sources */,

@@ -6,124 +6,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="OhM-CX-n8U">
-            <objects>
-                <viewController id="RrE-l7-67M" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZTn-EE-oo9"/>
-                        <viewControllerLayoutGuide type="bottom" id="b9d-Gb-Zod"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gy2-6U-mtq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gL3-1F-5hq">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NAO-WD-XyS">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NAO-WD-XyS" id="3Ja-WU-vn7">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="o36-Al-gYK">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o36-Al-gYK" id="BqB-LC-lwD">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="F9S-DL-9p8">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F9S-DL-9p8" id="6PQ-Ea-JfU">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XWY-m3-HQ9">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XWY-m3-HQ9" id="c1f-Bc-De3">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jtc-rT-kT6">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jtc-rT-kT6" id="gqD-BI-vU8">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="RrE-l7-67M" id="CLx-HE-yBL"/>
-                                    <outlet property="delegate" destination="RrE-l7-67M" id="deg-7m-znb"/>
-                                </connections>
-                            </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qkI-iJ-FFG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="RrE-l7-67M" id="89V-We-P4r"/>
-                                </connections>
-                            </searchBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gL3-1F-5hq" secondAttribute="trailing" id="6HW-PA-lcT"/>
-                            <constraint firstItem="gL3-1F-5hq" firstAttribute="top" secondItem="qkI-iJ-FFG" secondAttribute="bottom" id="PEP-Ip-lis"/>
-                            <constraint firstItem="gL3-1F-5hq" firstAttribute="bottom" secondItem="b9d-Gb-Zod" secondAttribute="top" id="cOx-ZI-6Yp"/>
-                            <constraint firstItem="gL3-1F-5hq" firstAttribute="leading" secondItem="gy2-6U-mtq" secondAttribute="leading" id="dBo-sO-ILV"/>
-                            <constraint firstItem="qkI-iJ-FFG" firstAttribute="leading" secondItem="gy2-6U-mtq" secondAttribute="leading" id="eE2-b9-ycn"/>
-                            <constraint firstAttribute="trailing" secondItem="qkI-iJ-FFG" secondAttribute="trailing" id="fnU-xC-XE8"/>
-                            <constraint firstItem="qkI-iJ-FFG" firstAttribute="top" secondItem="ZTn-EE-oo9" secondAttribute="bottom" constant="8" id="lCO-3x-sVu"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="gL3-1F-5hq"/>
-                                <exclude reference="qkI-iJ-FFG"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="eE2-b9-ycn"/>
-                                <exclude reference="fnU-xC-XE8"/>
-                                <exclude reference="lCO-3x-sVu"/>
-                                <exclude reference="6HW-PA-lcT"/>
-                                <exclude reference="PEP-Ip-lis"/>
-                                <exclude reference="cOx-ZI-6Yp"/>
-                                <exclude reference="dBo-sO-ILV"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="gL3-1F-5hq"/>
-                                <include reference="qkI-iJ-FFG"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="eE2-b9-ycn"/>
-                                <include reference="fnU-xC-XE8"/>
-                                <include reference="lCO-3x-sVu"/>
-                                <include reference="6HW-PA-lcT"/>
-                                <include reference="PEP-Ip-lis"/>
-                                <include reference="cOx-ZI-6Yp"/>
-                                <include reference="dBo-sO-ILV"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="resultsTable" destination="gL3-1F-5hq" id="tXu-5c-W3p"/>
-                        <outlet property="searchDisplayController" destination="RB4-bj-blz" id="WVn-Sb-3ih"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dmN-hZ-nBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="RB4-bj-blz">
-                    <connections>
-                        <outlet property="delegate" destination="RrE-l7-67M" id="fqJ-ED-oPZ"/>
-                        <outlet property="searchContentsController" destination="RrE-l7-67M" id="CMr-nd-QEJ"/>
-                        <outlet property="searchResultsDataSource" destination="RrE-l7-67M" id="kSc-vx-Np5"/>
-                        <outlet property="searchResultsDelegate" destination="RrE-l7-67M" id="dh6-Ik-5hD"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="169.5" y="411"/>
-        </scene>
         <!--Spotify Artist Search-->
         <scene sceneID="a9u-Bj-BBx">
             <objects>
@@ -153,6 +35,7 @@
                             <outlet property="delegate" destination="DYc-co-tIM" id="zwP-PR-eyc"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="hcS-Zs-qEE"/>
                     <navigationItem key="navigationItem" title="Spotify Artist Search" id="hfe-AE-iST"/>
                     <connections>
                         <outlet property="resultsTable" destination="YCh-SY-x9g" id="ffn-w9-Nwm"/>
@@ -162,7 +45,28 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxR-o8-ERh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030.5" y="1125"/>
+            <point key="canvasLocation" x="925.5" y="1833"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="7JU-rT-fqF">
+            <objects>
+                <tabBarController id="egZ-BV-alu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dya-ey-3iW"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="y5s-v5-Xwb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.075988068490000005" green="0.70967487370000004" blue="0.2136969242" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="DYc-co-tIM" kind="relationship" relationship="viewControllers" id="ZXs-cq-DI3"/>
+                        <segue destination="av8-Hc-RZp" kind="relationship" relationship="viewControllers" id="4nQ-xl-IHX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ds-vr-itv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="2316"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qqC-cv-TFZ">
@@ -177,12 +81,12 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="DYc-co-tIM" kind="relationship" relationship="rootViewController" id="Lyl-BE-pNs"/>
+                        <segue destination="egZ-BV-alu" kind="relationship" relationship="rootViewController" id="81z-Gj-7Ut"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qjI-BR-Isj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="169.5" y="1125"/>
+            <point key="canvasLocation" x="-910.5" y="2309"/>
         </scene>
         <!--Artist Detail-->
         <scene sceneID="b8C-d2-HYY">
@@ -321,23 +225,23 @@
                                 <exclude reference="agT-Wn-xzq"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="4fg-Jc-INh"/>
+                                <exclude reference="7Ix-cL-WmZ"/>
+                                <exclude reference="iKs-Wo-da6"/>
+                                <exclude reference="Bcj-UG-ovd"/>
                                 <exclude reference="Rkh-GK-cMC"/>
                                 <exclude reference="ohS-QC-A5o"/>
                                 <exclude reference="vR8-ZS-UgZ"/>
-                                <exclude reference="421-hQ-xrb"/>
-                                <exclude reference="Ki2-eK-7Lb"/>
-                                <exclude reference="l5E-AG-YR1"/>
                                 <exclude reference="93N-ng-5uM"/>
                                 <exclude reference="Voc-fF-A5k"/>
                                 <exclude reference="x3g-7W-Lqf"/>
                                 <exclude reference="z4z-Od-b47"/>
-                                <exclude reference="4fg-Jc-INh"/>
-                                <exclude reference="7Ix-cL-WmZ"/>
-                                <exclude reference="iKs-Wo-da6"/>
                                 <exclude reference="ZoJ-W6-19b"/>
                                 <exclude reference="h0T-4B-4Hv"/>
                                 <exclude reference="yTn-gA-TNG"/>
-                                <exclude reference="Bcj-UG-ovd"/>
+                                <exclude reference="421-hQ-xrb"/>
+                                <exclude reference="Ki2-eK-7Lb"/>
+                                <exclude reference="l5E-AG-YR1"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -349,23 +253,23 @@
                                 <include reference="agT-Wn-xzq"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="4fg-Jc-INh"/>
+                                <include reference="7Ix-cL-WmZ"/>
+                                <include reference="iKs-Wo-da6"/>
+                                <include reference="Bcj-UG-ovd"/>
                                 <include reference="Rkh-GK-cMC"/>
                                 <include reference="ohS-QC-A5o"/>
                                 <include reference="vR8-ZS-UgZ"/>
-                                <include reference="421-hQ-xrb"/>
-                                <include reference="Ki2-eK-7Lb"/>
-                                <include reference="l5E-AG-YR1"/>
                                 <include reference="93N-ng-5uM"/>
                                 <include reference="Voc-fF-A5k"/>
                                 <exclude reference="x3g-7W-Lqf"/>
                                 <exclude reference="z4z-Od-b47"/>
-                                <include reference="4fg-Jc-INh"/>
-                                <include reference="7Ix-cL-WmZ"/>
-                                <include reference="iKs-Wo-da6"/>
                                 <include reference="ZoJ-W6-19b"/>
                                 <include reference="h0T-4B-4Hv"/>
                                 <include reference="yTn-gA-TNG"/>
-                                <include reference="Bcj-UG-ovd"/>
+                                <include reference="421-hQ-xrb"/>
+                                <include reference="Ki2-eK-7Lb"/>
+                                <include reference="l5E-AG-YR1"/>
                             </mask>
                         </variation>
                     </view>
@@ -378,8 +282,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51z-cD-wDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1810.5" y="1125"/>
+            <point key="canvasLocation" x="1987.5" y="2316"/>
+        </scene>
+        <!--Favorite Artists-->
+        <scene sceneID="dqB-Pl-XCh">
+            <objects>
+                <tableViewController title="Favorite Artists" id="av8-Hc-RZp" userLabel="Favorite Artists" customClass="SAFavoritesViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xTz-tS-Qbi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="search favorite arists" id="B80-CN-AQE">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="av8-Hc-RZp" id="tPH-mZ-2wb"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YNr-WB-wO6">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YNr-WB-wO6" id="bFE-Uv-sQB">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="av8-Hc-RZp" id="Q9K-uH-7by"/>
+                            <outlet property="delegate" destination="av8-Hc-RZp" id="GgE-z0-YHJ"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="MGZ-KI-U0v"/>
+                    <navigationItem key="navigationItem" title="Spotify Artist Search" id="bvD-kf-ZPt"/>
+                    <connections>
+                        <outlet property="favoritesTable" destination="xTz-tS-Qbi" id="cWp-wB-zNE"/>
+                        <outlet property="searchBar" destination="xTz-tS-Qbi" id="hB1-vz-zLM"/>
+                        <segue destination="F07-Mr-rjh" kind="show" identifier="goToArtistDetail" id="gwo-Hk-yeR"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fsu-xT-viD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.5" y="2710"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gwo-Hk-yeR"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.075988068490000005" green="0.70967487370000004" blue="0.2136969242" alpha="1" colorSpace="calibratedRGB"/>
 </document>
