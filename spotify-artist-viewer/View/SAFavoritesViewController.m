@@ -12,7 +12,6 @@
 
 @interface SAFavoritesViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) IBOutlet UITableView *favoritesTable;
 @property (strong, nonatomic) SAFavoritesManager *favManager;
 @end
 
@@ -20,16 +19,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.favoritesTable reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.topItem.title = @"Your Favorites";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if(!self.navigationItem.rightBarButtonItem) NSLog(@"Still Not Set Yet Chief");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +47,7 @@
 
 #pragma mark - SearchBar Delegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [self.favoritesTable reloadData];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
