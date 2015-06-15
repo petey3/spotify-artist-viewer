@@ -37,13 +37,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.resultsTable setBackgroundColor:[UIColor lightGrayColor]];
-    self.navigationController.navigationBar.topItem.title = @"Spotify Artist Search";
 }
 
 - (void) viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.navigationController.navigationBar.translucent = NO;
-    //self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.topItem.title = @"Spotify Artist Search";
 }
 
 - (void)didReceiveMemoryWarning {

@@ -46,7 +46,11 @@ static SAFavoritesManager *sharedManager = nil;
 
 #pragma mark - Instance Methods
 - (void) addArtist:(SAArtist *)artist {
-    if(artist) {
+    //When checking for doubles, we need to look at names and not artist objects
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF.name = %@", artist.name];
+    NSArray *filteredArtists = [self.mutableArtists filteredArrayUsingPredicate:namePredicate];
+    
+    if(artist && filteredArtists.count == 0) {
         [self.mutableArtists addObject:artist];
         self.artists = [self.mutableArtists copy];
         NSLog(@"Added %@ as a new favorite artist, totaling %li favorite artists", artist.name, self.artists.count);

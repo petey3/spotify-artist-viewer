@@ -24,15 +24,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.topItem.title = @"Your Favorites";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
+    /*
+    //can't get the following code to work, working around an edit button
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    if(!self.navigationItem.rightBarButtonItem) NSLog(@"Still Not Set Yet Chief");
+    [self.navigationItem setRightBarButtonItem:self.editButtonItem];
+    if(![self.navigationItem rightBarButtonItem]) NSLog(@"Still Not Set Yet Chief");
+     */
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.topItem.title = @"Your Favorites";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +54,7 @@
 #pragma mark - SearchBar Delegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self.tableView reloadData];
+    [self.tableView setEditing:YES animated:YES]; //TODO: Remove for legit edit button
 }
 
 #pragma mark - Table view data source
@@ -79,15 +86,24 @@
     return cell;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(editingStyle == UITableViewCellEditingStyleDelete) {
+        NSArray *artists = self.favManager.artists;
+        SAArtist *artist = [artists objectAtIndex:indexPath.row];
+        [self.favManager removeArtist:artist];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
-*/
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
 
 /*
 #pragma mark - Navigation
