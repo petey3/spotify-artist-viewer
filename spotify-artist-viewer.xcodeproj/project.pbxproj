@@ -270,6 +270,7 @@
 				TargetAttributes = {
 					2E7674261B26766200336867 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = THP5EV5EJ9;
 					};
 					2E76743F1B26766200336867 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -493,9 +494,12 @@
 			baseConfigurationReference = 48F6197D1125A273286B3198 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "spotify-artist-viewer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -504,9 +508,12 @@
 			baseConfigurationReference = 15113B1E0B16E4EF6147ED57 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "spotify-artist-viewer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

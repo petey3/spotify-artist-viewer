@@ -39,6 +39,9 @@
     [self.navigationItem setRightBarButtonItem:self.editButtonItem];
     if(![self.navigationItem rightBarButtonItem]) NSLog(@"Still Not Set Yet Chief");
      */
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTable:)];
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -64,6 +67,10 @@
     [self.tableView reloadData];
 }
 
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
 #pragma mark - Search Utility
 
 - (void) updateSearchResults:(NSString *)searchText {
@@ -77,6 +84,17 @@
     }
 }
 
+- (void) tapTable:(UIGestureRecognizer *)recognizer {
+    CGPoint tapLocation = [recognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:tapLocation];
+    
+    if(indexPath) {
+        recognizer.cancelsTouchesInView = NO;
+    } else {
+        [self.searchBar resignFirstResponder];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -84,7 +102,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"Table sees %li artists", self.searchResults.count);
+    NSLog(@"Table sees %li artists", (unsigned long)self.searchResults.count);
     return self.searchResults.count;
 }
 

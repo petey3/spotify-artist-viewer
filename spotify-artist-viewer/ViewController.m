@@ -37,6 +37,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.resultsTable setBackgroundColor:[UIColor lightGrayColor]];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTable:)];
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void) viewDidLayoutSubviews {
@@ -68,6 +72,21 @@
                                  success:addArtists
                                  failure:reportError];
 }
+
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+- (void) tapTable:(UIGestureRecognizer *)recognizer {
+    CGPoint tapLocation = [recognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:tapLocation];
+    
+    if(indexPath) {
+        recognizer.cancelsTouchesInView = NO;
+    } else {
+        [self.searchBar resignFirstResponder];
+    }
+}
      
 #pragma mark - TableView Actions
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -96,6 +115,7 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.searchBar resignFirstResponder];
     [self performSegueWithIdentifier:@"goToArtistDetail" sender:self.resultsTable];
 }
 
