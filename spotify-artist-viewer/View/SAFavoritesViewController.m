@@ -14,12 +14,15 @@
 @interface SAFavoritesViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) SAFavoritesManager *favManager;
+@property (strong, nonatomic) NSArray *searchResults;
+@property (strong, nonatomic) NSString *lastSearch;
 @end
 
 @implementation SAFavoritesViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self updateSearchResults:@""];
     [self.tableView reloadData];
 }
 
@@ -55,9 +58,23 @@
 }
 
 #pragma mark - SearchBar Delegate
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self updateSearchResults:searchText];
     [self.tableView reloadData];
-    [self.tableView setEditing:YES animated:YES]; //TODO: Remove for legit edit button
+}
+
+#pragma mark - Search Utility
+
+- (void) updateSearchResults:(NSString *)searchText {
+    self.lastSearch = searchText;
+    if([searchText isEqual: @""]) {
+        self.searchResults = self.favManager.artists;
+    } else {
+        NSString *predicateFormat = @"(SELF.name contains[c] %@)";
+        NSPredicate *namePredicate = [NSPredicate predicateWithFormat:predicateFormat, searchText];
+        self.searchResults = [self.favManager.artists filteredArrayUsingPredicate:namePredicate];
+    }
 }
 
 #pragma mark - Table view data source
@@ -67,14 +84,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"Table sees %li artists", self.favManager.artists.count);
-    return self.favManager.artists.count;
+    NSLog(@"Table sees %li artists", self.searchResults.count);
+    return self.searchResults.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    NSArray *artists = self.favManager.artists;
     
     SATableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
@@ -82,8 +98,8 @@
         cell = [nib objectAtIndex:0];
     }
     
-    cell.name.text = [artists[indexPath.row] name];
-    NSNumber *artistPopularity = [artists[indexPath.row] popularity];
+    cell.name.text = [self.searchResults[indexPath.row] name];
+    NSNumber *artistPopularity = [self.searchResults[indexPath.row] popularity];
     [cell.popularity setProgress:(float)(artistPopularity.floatValue / 100.0f) animated:YES];
     
     return cell;
@@ -91,9 +107,10 @@
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if(editingStyle == UITableViewCellEditingStyleDelete) {
-        NSArray *artists = self.favManager.artists;
+        NSArray *artists = self.searchResults;
         SAArtist *artist = [artists objectAtIndex:indexPath.row];
         [self.favManager removeArtist:artist];
+        [self updateSearchResults:self.lastSearch];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
