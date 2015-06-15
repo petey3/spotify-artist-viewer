@@ -39,6 +39,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     self.navigationController.navigationBar.topItem.title = @"Your Favorites";
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationItem setRightBarButtonItem:self.editButtonItem];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,7 @@
 
 #import "SAArtistViewController.h"
 #import "SARequestManager.h"
+#import "SAFavoritesManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SAArtistViewController ()
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 @property (weak, nonatomic) IBOutlet UITextView *bioText;
 @property (weak, nonatomic) IBOutlet UIImageView *blurImageView;
+@property (strong, nonatomic) SAFavoritesManager *favManager;
 @end
 
 @implementation SAArtistViewController
@@ -22,8 +24,6 @@
 #pragma mark - Setup
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.title = self.artist.name;
     
     void (^setBio)(SAArtist *) = ^(SAArtist *artist) {
         self.bioText.text = artist.bio;
@@ -33,9 +33,20 @@
     
     //Update artists based on the search
     SARequestManager *reqManager = [SARequestManager sharedManager];
+    self.favManager = [SAFavoritesManager sharedManager];
     [reqManager storeArtistBio:self.artist
                        success:setBio
                        failure:reportError];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.editButtonItem.title = [self.favManager isFavorited:self.artist] ? @"★" : @"☆";
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    self.navigationItem.title = self.artist.name;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationItem setRightBarButtonItem:self.editButtonItem];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -60,6 +71,21 @@
     //Give it a border
     self.artistImageView.layer.borderWidth = 3.0f;
     self.artistImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+}
+
+#pragma mark - Navigation Bar
+
+- (void) setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    BOOL favorited = [self.favManager isFavorited:self.artist];
+    if(favorited) {
+        [self.favManager removeArtist:self.artist];
+        self.editButtonItem.title = @"☆";
+    } else {
+        [self.favManager addArtist:self.artist];
+        self.editButtonItem.title = @"★";
+    }
 }
 
 @end

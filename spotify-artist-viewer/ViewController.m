@@ -104,8 +104,6 @@
         NSIndexPath *indexPath = [self.resultsTable indexPathForSelectedRow];
         SAArtist *artist = self.artists[indexPath.row];
         
-        [self.favManager addArtist:artist];
-        
         SAArtistViewController *detailVC = [segue destinationViewController];
         detailVC.artist = artist;
     }

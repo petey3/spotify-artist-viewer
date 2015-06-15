@@ -15,5 +15,6 @@
 + (instancetype) sharedManager;
 - (void) addArtist:(SAArtist *)artist;
 - (void) removeArtist:(SAArtist *)artist;
+- (BOOL) isFavorited:(SAArtist *)artist;
 
 @end
