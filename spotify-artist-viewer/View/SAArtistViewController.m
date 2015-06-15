@@ -40,11 +40,8 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    self.editButtonItem.title = [self.favManager isFavorited:self.artist] ? @"★" : @"☆";
-}
-
-- (void) viewDidAppear:(BOOL)animated {
     self.navigationItem.title = self.artist.name;
+    self.editButtonItem.title = [self.favManager isFavorited:self.artist] ? @"★" : @"☆";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.navigationItem setRightBarButtonItem:self.editButtonItem];
 }
