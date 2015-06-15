@@ -63,7 +63,7 @@ static SAFavoritesManager *sharedManager = nil;
 }
 
 - (BOOL) isFavorited:(SAArtist *)artist {
-    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF.name = %@", artist.name];
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF.spotifyURI = %@", artist.spotifyURI];
     NSArray *filteredArtists = [self.mutableArtists filteredArrayUsingPredicate:namePredicate];
     return filteredArtists.count > 0;
 }
