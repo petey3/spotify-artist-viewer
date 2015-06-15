@@ -8,6 +8,7 @@
 
 #import "SAFavoritesViewController.h"
 #import "SAFavoritesManager.h"
+#import "SAArtistViewController.h"
 #import "SATableCell.h"
 
 @interface SAFavoritesViewController ()
@@ -107,14 +108,20 @@
     return UITableViewCellEditingStyleDelete;
 }
 
-/*
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"goToArtistDetail" sender:tableView];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+ - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     if([[segue identifier] isEqualToString:@"goToArtistDetail"]) {
+         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+         SAArtist *artist = self.favManager.artists[indexPath.row];
+         
+         SAArtistViewController *detailVC = [segue destinationViewController];
+         detailVC.artist = artist;
+     }
 }
-*/
 
 @end
