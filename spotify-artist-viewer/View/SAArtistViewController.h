@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Intrepid. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SASearchViewController.h"
 #import "SAArtist.h"
 
 @interface SAArtistViewController : UIViewController

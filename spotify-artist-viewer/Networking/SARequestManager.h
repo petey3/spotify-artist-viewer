@@ -19,7 +19,7 @@
 /*!
  @discussion Loads the artist bio only when we need it and stores it
  */
-- (void)storeArtistBio:(SAArtist *)artist
+- (void)populateArtistBio:(SAArtist *)artist
              success:(void (^)(SAArtist *arist))success
              failure:(void (^)(NSError *error))failure;
 @end

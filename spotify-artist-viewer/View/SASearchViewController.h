@@ -7,6 +7,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SASearchViewController : UITableViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @end

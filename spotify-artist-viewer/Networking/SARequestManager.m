@@ -88,7 +88,7 @@
     [dataTask resume];
 }
 
-- (void)storeArtistBio:(SAArtist *)artist
+- (void)populateArtistBio:(SAArtist *)artist
                success:(void (^)(SAArtist *))success
                failure:(void (^)(NSError *))failure {
     
@@ -96,7 +96,7 @@
     NSString *endPointFormat = @"http://developer.echonest.com/api/v4/artist/biographies?api_key=%@&id=%@";
     NSString *query = [NSString stringWithFormat:endPointFormat, echoKey, artist.spotifyURI];
     
-    //If the bio is already stored, skip all of this and call success
+    //If the bio is already populated, skip all of this and call success
     if(artist.bio) {
         success(artist);
         return;

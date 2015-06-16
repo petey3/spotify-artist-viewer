@@ -14,7 +14,7 @@
 @end
 
 @implementation SAFavoritesManager
-static SAFavoritesManager *sharedManager = nil;
+static SAFavoritesManager *sharedManager = nil; //our singleton instance
 
 #pragma mark - Initializers
 - (instancetype) init {
@@ -46,11 +46,10 @@ static SAFavoritesManager *sharedManager = nil;
 
 #pragma mark - Instance Methods
 - (void) addArtist:(SAArtist *)artist {
-    //When checking for doubles, we need to look at names and not artist objects
+    //When checking for doubles, we need to look at URI's and not artist objects
     if(artist && ![self isFavorited:artist]) {
         [self.mutableArtists addObject:artist];
         self.artists = [self.mutableArtists copy];
-        NSLog(@"Added %@ as a new favorite artist, totaling %li favorite artists", artist.name, self.artists.count);
     }
 }
 
@@ -58,7 +57,6 @@ static SAFavoritesManager *sharedManager = nil;
     if([self.mutableArtists containsObject:artist]) {
         [self.mutableArtists removeObject:artist];
         self.artists = [self.mutableArtists copy];
-        NSLog(@"Removed %@ as a new favorite artist, totaling %li favorite artists", artist.name, self.artists.count);
     }
 }
 

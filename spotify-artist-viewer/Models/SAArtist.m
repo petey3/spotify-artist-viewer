@@ -8,6 +8,7 @@
 #import "SAArtist.h"
 
 @interface SAArtist()
+
 #pragma mark - Properties
 @property (strong, nonatomic, readwrite) NSString *name;
 @property (nonatomic, readwrite) NSNumber *popularity;

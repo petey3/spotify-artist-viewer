@@ -21,7 +21,7 @@
 
 @implementation SAArtistViewController
 
-#pragma mark - Setup
+#pragma mark - View Delegates
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -34,7 +34,7 @@
     //Update artists based on the search
     SARequestManager *reqManager = [SARequestManager sharedManager];
     self.favManager = [SAFavoritesManager sharedManager];
-    [reqManager storeArtistBio:self.artist
+    [reqManager populateArtistBio:self.artist
                        success:setBio
                        failure:reportError];
 }
@@ -51,11 +51,21 @@
     [self setArtistImage:self.artist.pictureURL];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Navigation Bar Delegates
+- (void) setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    BOOL favorited = [self.favManager isFavorited:self.artist];
+    if(favorited) {
+        [self.favManager removeArtist:self.artist];
+        self.editButtonItem.title = @"☆";
+    } else {
+        [self.favManager addArtist:self.artist];
+        self.editButtonItem.title = @"★";
+    }
 }
 
+#pragma mark - Utility
 - (void)setArtistImage:(NSString *)picture {
     NSURL *imgURL = [NSURL URLWithString:picture];
     [self.artistImageView sd_setImageWithURL:imgURL];
@@ -68,21 +78,6 @@
     //Give it a border
     self.artistImageView.layer.borderWidth = 3.0f;
     self.artistImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-}
-
-#pragma mark - Navigation Bar
-
-- (void) setEditing:(BOOL)editing animated:(BOOL)animated {
-    [super setEditing:editing animated:animated];
-    
-    BOOL favorited = [self.favManager isFavorited:self.artist];
-    if(favorited) {
-        [self.favManager removeArtist:self.artist];
-        self.editButtonItem.title = @"☆";
-    } else {
-        [self.favManager addArtist:self.artist];
-        self.editButtonItem.title = @"★";
-    }
 }
 
 @end

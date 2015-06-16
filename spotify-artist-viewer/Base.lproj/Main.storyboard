@@ -9,7 +9,7 @@
         <!--Spotify Artist Search-->
         <scene sceneID="a9u-Bj-BBx">
             <objects>
-                <tableViewController title="Spotify Artist Search" id="DYc-co-tIM" userLabel="Spotify Artist Search" customClass="ViewController" sceneMemberID="viewController">
+                <tableViewController title="Spotify Artist Search" id="DYc-co-tIM" userLabel="Spotify Artist Search" customClass="SASearchViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YCh-SY-x9g">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

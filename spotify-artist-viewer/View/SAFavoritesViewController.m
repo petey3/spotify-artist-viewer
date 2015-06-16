@@ -20,6 +20,13 @@
 
 @implementation SAFavoritesViewController
 
+#pragma mark - Initializers
+- (SAFavoritesManager *)favManager {
+    if(!_favManager) _favManager = [SAFavoritesManager sharedManager];
+    return _favManager;
+}
+
+#pragma mark - View Delegates
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self updateSearchResults:@""];
@@ -28,8 +35,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
@@ -39,7 +44,6 @@
     [self.navigationItem setRightBarButtonItem:self.editButtonItem];
     if(![self.navigationItem rightBarButtonItem]) NSLog(@"Still Not Set Yet Chief");
      */
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTable:)];
     [self.view addGestureRecognizer:tap];
 }
@@ -50,18 +54,7 @@
     [self.navigationItem setRightBarButtonItem:self.editButtonItem];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (SAFavoritesManager *)favManager {
-    if(!_favManager) _favManager = [SAFavoritesManager sharedManager];
-    return _favManager;
-}
-
-#pragma mark - SearchBar Delegate
-
+#pragma mark - SearchBar Delegates
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self updateSearchResults:searchText];
     [self.tableView reloadData];
@@ -72,7 +65,6 @@
 }
 
 #pragma mark - Search Utility
-
 - (void) updateSearchResults:(NSString *)searchText {
     self.lastSearch = searchText;
     if([searchText isEqual: @""]) {
@@ -84,25 +76,13 @@
     }
 }
 
-- (void) tapTable:(UIGestureRecognizer *)recognizer {
-    CGPoint tapLocation = [recognizer locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:tapLocation];
-    
-    if(indexPath) {
-        recognizer.cancelsTouchesInView = NO;
-    } else {
-        [self.searchBar resignFirstResponder];
-    }
-}
-
-#pragma mark - Table view data source
+#pragma mark - TableView Delegates
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"Table sees %li artists", (unsigned long)self.searchResults.count);
     return self.searchResults.count;
 }
 
@@ -148,7 +128,6 @@
 }
 
 #pragma mark - Navigation
-
  - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if([[segue identifier] isEqualToString:@"goToArtistDetail"]) {
          NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -157,6 +136,18 @@
          SAArtistViewController *detailVC = [segue destinationViewController];
          detailVC.artist = artist;
      }
+}
+
+#pragma mark - Custom Selectors
+- (void) tapTable:(UIGestureRecognizer *)recognizer {
+    CGPoint tapLocation = [recognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:tapLocation];
+    
+    if(indexPath) {
+        recognizer.cancelsTouchesInView = NO;
+    } else {
+        [self.searchBar resignFirstResponder];
+    }
 }
 
 @end

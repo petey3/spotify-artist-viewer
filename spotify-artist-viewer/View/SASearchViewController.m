@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Intrepid. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SASearchViewController.h"
 #import "SAArtist.h"
 #import "SARequestManager.h"
 #import "SAFavoritesManager.h"
 #import "SATableCell.h"
 #import "SAArtistViewController.h"
 
-@interface ViewController ()
+@interface SASearchViewController ()
 @property (strong, nonatomic) NSArray *artists; //array of SAArtists
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) SARequestManager *reqManager;
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *resultsTable;
 @end
 
-@implementation ViewController
+@implementation SASearchViewController
 
 #pragma mark - Inititializers
 - (SARequestManager*) reqManager {
@@ -34,6 +34,7 @@
     return _favManager;
 }
 
+#pragma mark - View Delegates
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.resultsTable setBackgroundColor:[UIColor lightGrayColor]];
@@ -52,19 +53,13 @@
     self.navigationController.navigationBar.topItem.title = @"Spotify Artist Search";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - SearchBar Actions
+#pragma mark - SearchBar Delegates
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     void (^addArtists)(NSArray *) = ^(NSArray *artists) {
         self.artists = artists;
         [self.resultsTable reloadData];
     };
     
-    //TODO:actually do something with error
     void (^reportError)(NSError*) = ^(NSError* error){};
     
     //Update artists based on the search
@@ -76,19 +71,8 @@
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
 }
-
-- (void) tapTable:(UIGestureRecognizer *)recognizer {
-    CGPoint tapLocation = [recognizer locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:tapLocation];
-    
-    if(indexPath) {
-        recognizer.cancelsTouchesInView = NO;
-    } else {
-        [self.searchBar resignFirstResponder];
-    }
-}
      
-#pragma mark - TableView Actions
+#pragma mark - TableView Delegates
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
@@ -119,6 +103,7 @@
     [self performSegueWithIdentifier:@"goToArtistDetail" sender:self.resultsTable];
 }
 
+#pragma mark - Navigation
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"goToArtistDetail"]) {
         NSIndexPath *indexPath = [self.resultsTable indexPathForSelectedRow];
@@ -126,6 +111,18 @@
         
         SAArtistViewController *detailVC = [segue destinationViewController];
         detailVC.artist = artist;
+    }
+}
+
+#pragma mark - Custom Selectors
+- (void) tapTable:(UIGestureRecognizer *)recognizer {
+    CGPoint tapLocation = [recognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:tapLocation];
+    
+    if(indexPath) {
+        recognizer.cancelsTouchesInView = NO;
+    } else {
+        [self.searchBar resignFirstResponder];
     }
 }
 
