@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		072B8DD41B28DFEA00BCD2E5 /* SATableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */; };
 		072B8DDB1B28E68100BCD2E5 /* SATableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 072B8DDA1B28E68100BCD2E5 /* SATableCell.m */; };
+		074A332C1B2B1CA8006AD27B /* SAFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074A332B1B2B1CA8006AD27B /* SAFavoritesViewController.m */; };
+		074A332F1B2B1DD3006AD27B /* SAFavoritesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 074A332E1B2B1DD3006AD27B /* SAFavoritesManager.m */; };
+		074A33311B2B67C0006AD27B /* SAFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074A33301B2B67C0006AD27B /* SAFavoriteCell.xib */; };
 		074AD5CB1B29BBB80018BEEF /* SAArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074AD5CA1B29BBB80018BEEF /* SAArtistViewController.m */; };
 		2E76742D1B26766200336867 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E76742C1B26766200336867 /* main.m */; };
 		2E7674301B26766200336867 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E76742F1B26766200336867 /* AppDelegate.m */; };
@@ -36,6 +39,11 @@
 		072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SATableCell.xib; sourceTree = "<group>"; };
 		072B8DD91B28E68100BCD2E5 /* SATableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SATableCell.h; path = View/SATableCell.h; sourceTree = "<group>"; };
 		072B8DDA1B28E68100BCD2E5 /* SATableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SATableCell.m; path = View/SATableCell.m; sourceTree = "<group>"; };
+		074A332A1B2B1CA8006AD27B /* SAFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SAFavoritesViewController.h; path = View/SAFavoritesViewController.h; sourceTree = "<group>"; };
+		074A332B1B2B1CA8006AD27B /* SAFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SAFavoritesViewController.m; path = View/SAFavoritesViewController.m; sourceTree = "<group>"; };
+		074A332D1B2B1DD3006AD27B /* SAFavoritesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SAFavoritesManager.h; path = Models/SAFavoritesManager.h; sourceTree = "<group>"; };
+		074A332E1B2B1DD3006AD27B /* SAFavoritesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SAFavoritesManager.m; path = Models/SAFavoritesManager.m; sourceTree = "<group>"; };
+		074A33301B2B67C0006AD27B /* SAFavoriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAFavoriteCell.xib; sourceTree = "<group>"; };
 		074AD5C91B29BBB80018BEEF /* SAArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SAArtistViewController.h; path = View/SAArtistViewController.h; sourceTree = "<group>"; };
 		074AD5CA1B29BBB80018BEEF /* SAArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SAArtistViewController.m; path = View/SAArtistViewController.m; sourceTree = "<group>"; };
 		15113B1E0B16E4EF6147ED57 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,7 +96,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		072B8DD81B28E0F600BCD2E5 /* View */ = {
+		072B8DD81B28E0F600BCD2E5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				2E7674311B26766200336867 /* ViewController.h */,
@@ -97,8 +105,30 @@
 				072B8DDA1B28E68100BCD2E5 /* SATableCell.m */,
 				074AD5C91B29BBB80018BEEF /* SAArtistViewController.h */,
 				074AD5CA1B29BBB80018BEEF /* SAArtistViewController.m */,
+				074A332A1B2B1CA8006AD27B /* SAFavoritesViewController.h */,
+				074A332B1B2B1CA8006AD27B /* SAFavoritesViewController.m */,
 			);
-			name = View;
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		074A33321B2B67CB006AD27B /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				2E7674391B26766200336867 /* LaunchScreen.xib */,
+				072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */,
+				2E7674341B26766200336867 /* Main.storyboard */,
+				074A33301B2B67C0006AD27B /* SAFavoriteCell.xib */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
+		074A33331B2B67F7006AD27B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2E76742E1B26766200336867 /* AppDelegate.h */,
+				2E76742F1B26766200336867 /* AppDelegate.m */,
+			);
+			name = Application;
 			sourceTree = "<group>";
 		};
 		2E76741E1B26766200336867 = {
@@ -124,16 +154,13 @@
 		2E7674291B26766200336867 /* spotify-artist-viewer */ = {
 			isa = PBXGroup;
 			children = (
+				074A33331B2B67F7006AD27B /* Application */,
 				2E7674501B2676CD00336867 /* Models */,
 				2E7674511B2676D400336867 /* Networking */,
-				2E76742E1B26766200336867 /* AppDelegate.h */,
-				2E76742F1B26766200336867 /* AppDelegate.m */,
-				2E7674341B26766200336867 /* Main.storyboard */,
 				2E7674371B26766200336867 /* Images.xcassets */,
-				2E7674391B26766200336867 /* LaunchScreen.xib */,
+				074A33321B2B67CB006AD27B /* Nibs */,
 				2E76742A1B26766200336867 /* Supporting Files */,
-				072B8DD31B28DFEA00BCD2E5 /* SATableCell.xib */,
-				072B8DD81B28E0F600BCD2E5 /* View */,
+				072B8DD81B28E0F600BCD2E5 /* ViewControllers */,
 			);
 			path = "spotify-artist-viewer";
 			sourceTree = "<group>";
@@ -169,6 +196,8 @@
 			children = (
 				2E7674521B2676F400336867 /* SAArtist.h */,
 				2E7674531B2676F400336867 /* SAArtist.m */,
+				074A332D1B2B1DD3006AD27B /* SAFavoritesManager.h */,
+				074A332E1B2B1DD3006AD27B /* SAFavoritesManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -241,6 +270,7 @@
 				TargetAttributes = {
 					2E7674261B26766200336867 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = THP5EV5EJ9;
 					};
 					2E76743F1B26766200336867 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -275,6 +305,7 @@
 				072B8DD41B28DFEA00BCD2E5 /* SATableCell.xib in Resources */,
 				2E7674361B26766200336867 /* Main.storyboard in Resources */,
 				2E76743B1B26766200336867 /* LaunchScreen.xib in Resources */,
+				074A33311B2B67C0006AD27B /* SAFavoriteCell.xib in Resources */,
 				2E7674381B26766200336867 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,8 +359,10 @@
 			files = (
 				2E7674541B2676F400336867 /* SAArtist.m in Sources */,
 				2E7674331B26766200336867 /* ViewController.m in Sources */,
+				074A332F1B2B1DD3006AD27B /* SAFavoritesManager.m in Sources */,
 				2E7674301B26766200336867 /* AppDelegate.m in Sources */,
 				074AD5CB1B29BBB80018BEEF /* SAArtistViewController.m in Sources */,
+				074A332C1B2B1CA8006AD27B /* SAFavoritesViewController.m in Sources */,
 				2E76742D1B26766200336867 /* main.m in Sources */,
 				072B8DDB1B28E68100BCD2E5 /* SATableCell.m in Sources */,
 				2E7674571B26772600336867 /* SARequestManager.m in Sources */,
@@ -461,9 +494,12 @@
 			baseConfigurationReference = 48F6197D1125A273286B3198 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "spotify-artist-viewer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -472,9 +508,12 @@
 			baseConfigurationReference = 15113B1E0B16E4EF6147ED57 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "spotify-artist-viewer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
